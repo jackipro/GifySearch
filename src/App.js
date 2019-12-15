@@ -27,7 +27,7 @@ export class App extends Component {
   // ? ANCHOR  Show trending Gif:
   async componentDidMount() {
     this.setState({ loading: true });
-    const url = `https://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&limit=15&rating=G`;
+    const url = `https://api.giphy.com/v1/gifs/trending?api_key=CDWp9F4YG8K0SS6dEp7Kbtt5FszuZQWn&limit=15&rating=G`;
     request.get(url, (err, res) => {
       this.setState({ gifs: res.body.data });
       this.setState({ loading: false });
@@ -37,7 +37,7 @@ export class App extends Component {
   //ANCHOR  Search Gif:
   searchGif = text => {
     this.setState({ loading: true });
-    const url = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${text}&limit=500&offset=0&rating=G&lang=vn`;
+    const url = `https://api.giphy.com/v1/gifs/search?api_key=CDWp9F4YG8K0SS6dEp7Kbtt5FszuZQWn&q=${text}&limit=500&offset=0&rating=G&lang=vn`;
     request.get(url, (err, res) => {
       this.setState({ gifs: res.body.data });
       this.setState({ loading: false });
@@ -46,7 +46,7 @@ export class App extends Component {
   //ANCHOR  Search Random Gif:
   searchRandom = tag => {
     this.setState({ loading: true });
-    const url = `https://api.giphy.com/v1/gifs/random?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&tag=${tag}&rating=G`;
+    const url = `https://api.giphy.com/v1/gifs/random?api_key=CDWp9F4YG8K0SS6dEp7Kbtt5FszuZQWn&tag=${tag}&rating=G`;
     request.get(url, (err, res) => {
       this.setState({ gif: res.body.data.images.fixed_width.url });
       this.setState({ loading: false });
@@ -56,17 +56,17 @@ export class App extends Component {
   render() {
     return (
       <Router>
-        <div className='App'>
+        <div className="App">
           <Nav />
 
-          <div className='container'>
+          <div className="container">
             <Switch>
               <Route
                 exact
-                path='/'
+                path="/"
                 render={props => (
                   <Fragment>
-                    <h1 className='text-center title-home'>
+                    <h1 className="text-center title-home">
                       Let search your favour GIF
                     </h1>
                     <Search searchGif={this.searchGif} />
@@ -75,13 +75,13 @@ export class App extends Component {
                   </Fragment>
                 )}
               />
-              <Route exact path='/about' component={About} />
+              <Route exact path="/about" component={About} />
               <Route
                 exact
-                path='/searchrandom'
+                path="/searchrandom"
                 render={props => (
                   <Fragment>
-                    <h1 className='text-center title-home'>
+                    <h1 className="text-center title-home">
                       Search Random Tag GIF
                     </h1>
                     <SearchRandom searchRandom={this.searchRandom} />
